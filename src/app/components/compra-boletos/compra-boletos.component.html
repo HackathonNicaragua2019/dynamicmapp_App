@@ -1,0 +1,25 @@
+<form class="example-form">
+  <div>Disponible</div>
+  <div>Sale:</div>
+  <div>Llega:</div>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Cantidad" value="" type="number">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nombre Completo" value="">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Cedula" value="">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Telefono" value="">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Numero de Targeta" value="">
+  </mat-form-field>
+  <div>Precio: </div>
+  <div class="example-button-row">
+      <button mat-raised-button color="warn">Cancelar</button>
+      <button mat-raised-button color="primary" (click)="openDialog()">Comprar</button>
+    </div>
+</form>
