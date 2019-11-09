@@ -11,11 +11,20 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export class ToolbarComponent {
 
   constructor(private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {}
-
+/**
+ * @method openDialogCompra
+ * Este metodo habré el componete de compra de boleto, 
+ * y muestra la información que debe llenar el usuario para realiza una compra
+ */
   openDialogCompra(): void {
     this._bottomSheet.open(CompraBoletosComponent);
   }
 
+  /**
+ * @method openBottomSheet
+ * Este metodo habré el componete de Información de ruta, 
+ * esta es una información de los datos de la ruta, tanto del conductor como de la ruta
+ */
   openBottomSheet(): void {
     this._bottomSheet.open(InformacionRutaComponent);
   }
