@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.5",
+    "agm-direction": "0.6.0",
     "@angular/animations": "^7.2.12",
     "@angular/cdk": "^7.3.7",
     "@angular/common": "^7.2.12",
@@ -31,9 +33,7 @@
     "rxjs-compat": "^6.3.3",
     "tslib": "^1.9.3",
     "zone.js": "^0.8.29",
-    "reflect-metadata": "^0.1.12",
-    "bingmaps": "2.0.3",
-    "angular-maps": "6.0.1"
+    "reflect-metadata": "^0.1.12"
   },
   "scripts": {
     "ng": "ng",

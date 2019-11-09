@@ -7,51 +7,34 @@ import { ToolbarComponent } from './components/input_Autocompletado/autocompleta
 import { MaterialModule } from './material.module';
 // import { ComponentsModule } from './components/components.module';
 import { ServicesModule } from './services/services.module';
-import {InformacionRutaComponent} from './components/informacion-ruta/informacion-ruta.component';
-import {CompraBoletosComponent} from './components/compra-boletos/compra-boletos.component';
+import { InformacionRutaComponent } from './components/informacion-ruta/informacion-ruta.component';
+import { CompraBoletosComponent } from './components/compra-boletos/compra-boletos.component';
 
 
-import {
-  MapModule,
-  MapAPILoader,
-  MarkerTypeId,
-  IMapOptions,
-  IBox,
-  IMarkerIconInfo,
-  WindowRef,
-  DocumentRef,
-  MapServiceFactory,
-  BingMapAPILoaderConfig,
-  BingMapAPILoader,
-  GoogleMapAPILoader,
-  GoogleMapAPILoaderConfig
-} from 'angular-maps';
-
-export function MapServiceProviderFactory() {
-  let bc: BingMapAPILoaderConfig = new BingMapAPILoaderConfig();
-  bc.apiKey = "Ap0AObt84NcDaUThCeWOj52ZqUHv6k4TJhjLibR-DghC-semgoj-0uPbIi8r0E4j"; // your bing map key
-  bc.branch = "experimental";
-  // to use the experimental bing brach. There are some bug fixes for
-  // clustering in that branch you will need if you want to use 
-  // clustering.
-  return new BingMapAPILoader(bc, new WindowRef(), new DocumentRef());
-}
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 
 @NgModule({
   imports:
-    [BrowserModule,
+    [
+      BrowserModule,
       // ComponentsModule, 
       MaterialModule,
       ServicesModule,
-      MapModule.forRoot()
+      AgmCoreModule.forRoot({ 
+        // API KEY GOOGLE MAP
+        apiKey: 'AIzaSyA7ExFXTzxWRyqArdiY3sHfu2nG8tAz6MM',
+      }),
+        // Componente para las direcciones
+      AgmDirectionModule
     ],
   declarations: [AppComponent, ToolbarComponent, InformacionRutaComponent, CompraBoletosComponent],
-  providers: [{
-    provide: MapAPILoader, deps: [], useFactory: MapServiceProviderFactory
-  }],
-  entryComponents:[InformacionRutaComponent, CompraBoletosComponent],
+  providers: [
+    GoogleMapsAPIWrapper
+  ],
+  entryComponents: [InformacionRutaComponent, CompraBoletosComponent],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class AppModule {
