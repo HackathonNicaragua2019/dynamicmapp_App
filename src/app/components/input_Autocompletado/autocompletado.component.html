@@ -18,5 +18,5 @@
 <mat-chip-list aria-label="Paradas" *ngIf="showChips">
     <mat-chip>Paradas</mat-chip>
     <mat-chip  (click)="openBottomSheet()">Información</mat-chip>
-    <mat-chip>Compra de boleto</mat-chip>
+    <mat-chip (click)="openDialogCompra()">Compra de boleto</mat-chip>
 </mat-chip-list>

@@ -8,6 +8,7 @@ import { MaterialModule } from './material.module';
 // import { ComponentsModule } from './components/components.module';
 import { ServicesModule } from './services/services.module';
 import {InformacionRutaComponent} from './components/informacion-ruta/informacion-ruta.component';
+import {CompraBoletosComponent} from './components/compra-boletos/compra-boletos.component';
 
 
 import {
@@ -44,11 +45,11 @@ export function MapServiceProviderFactory() {
       ServicesModule,
       MapModule.forRoot()
     ],
-  declarations: [AppComponent, ToolbarComponent, InformacionRutaComponent],
+  declarations: [AppComponent, ToolbarComponent, InformacionRutaComponent, CompraBoletosComponent],
   providers: [{
     provide: MapAPILoader, deps: [], useFactory: MapServiceProviderFactory
   }],
-  entryComponents:[InformacionRutaComponent],
+  entryComponents:[InformacionRutaComponent, CompraBoletosComponent],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
