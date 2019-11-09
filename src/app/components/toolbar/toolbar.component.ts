@@ -11,7 +11,7 @@ export class ToolbarComponent {
   myControl = new FormControl();
   options: any[] = [
     {
-      name: 'Brigadista',
+      name: 'Item route Map one',
       maxLatitude: 12.9289487,
       maxLongitude: -85.9175752,
       minLatitude: 12.9289487,
@@ -20,7 +20,7 @@ export class ToolbarComponent {
       longitud: -85.9175752
     },
     {
-      name: 'EEUU',
+      name: 'Item route Map one',
       maxLatitude: 32,
       maxLongitude: -92,
       minLatitude: 29,
