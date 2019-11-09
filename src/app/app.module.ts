@@ -12,47 +12,30 @@ import {CompraBoletosComponent} from './components/compra-boletos/compra-boletos
 import {CompraRealizadaComponent} from './components/compra-realizada/compra-realizada.component';
 
 
-import {
-  MapModule,
-  MapAPILoader,
-  MarkerTypeId,
-  IMapOptions,
-  IBox,
-  IMarkerIconInfo,
-  WindowRef,
-  DocumentRef,
-  MapServiceFactory,
-  BingMapAPILoaderConfig,
-  BingMapAPILoader,
-  GoogleMapAPILoader,
-  GoogleMapAPILoaderConfig
-} from 'angular-maps';
-
-export function MapServiceProviderFactory() {
-  let bc: BingMapAPILoaderConfig = new BingMapAPILoaderConfig();
-  bc.apiKey = "Ap0AObt84NcDaUThCeWOj52ZqUHv6k4TJhjLibR-DghC-semgoj-0uPbIi8r0E4j"; // your bing map key
-  bc.branch = "experimental";
-  // to use the experimental bing brach. There are some bug fixes for
-  // clustering in that branch you will need if you want to use 
-  // clustering.
-  return new BingMapAPILoader(bc, new WindowRef(), new DocumentRef());
-}
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 
 @NgModule({
   imports:
-    [BrowserModule,
+    [
+      BrowserModule,
       // ComponentsModule, 
       MaterialModule,
       ServicesModule,
-      MapModule.forRoot()
+      AgmCoreModule.forRoot({ 
+        // API KEY GOOGLE MAP
+        apiKey: 'AIzaSyA7ExFXTzxWRyqArdiY3sHfu2nG8tAz6MM',
+      }),
+        // Componente para las direcciones
+      AgmDirectionModule
     ],
   declarations: [AppComponent, ToolbarComponent, InformacionRutaComponent, CompraBoletosComponent, CompraRealizadaComponent],
-  providers: [{
-    provide: MapAPILoader, deps: [], useFactory: MapServiceProviderFactory
-  }],
-  entryComponents:[InformacionRutaComponent, CompraBoletosComponent, CompraRealizadaComponent],
+  providers: [
+    GoogleMapsAPIWrapper
+  ],
+  entryComponents: [InformacionRutaComponent, CompraBoletosComponent, CompraRealizadaComponent],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class AppModule {

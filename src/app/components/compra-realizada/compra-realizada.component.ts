@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -9,9 +10,14 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class CompraRealizadaComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<CompraRealizadaComponent>) { }
+  constructor(public dialogRef: MatDialogRef<CompraRealizadaComponent>, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
+  }
+  openSnackCompraExitosa(message: string, action: string) {
+    this._snackBar.open("Boleto guardado en galeria!!", action, {
+      duration: 2000,
+    });
   }
 
 }
