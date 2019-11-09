@@ -7,13 +7,14 @@ import { ToolbarComponent } from './components/input_Autocompletado/autocompleta
 import { MaterialModule } from './material.module';
 // import { ComponentsModule } from './components/components.module';
 import { ServicesModule } from './services/services.module';
-import {InformacionRutaComponent} from './components/informacion-ruta/informacion-ruta.component';
-import {CompraBoletosComponent} from './components/compra-boletos/compra-boletos.component';
-import {CompraRealizadaComponent} from './components/compra-realizada/compra-realizada.component';
+import { InformacionRutaComponent } from './components/informacion-ruta/informacion-ruta.component';
+import { CompraBoletosComponent } from './components/compra-boletos/compra-boletos.component';
+import { CompraRealizadaComponent } from './components/compra-realizada/compra-realizada.component';
 
 
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
+import { environment } from './environments/environment';
 
 @NgModule({
   imports:
@@ -22,11 +23,11 @@ import { AgmDirectionModule } from 'agm-direction';
       // ComponentsModule, 
       MaterialModule,
       ServicesModule,
-      AgmCoreModule.forRoot({ 
+      AgmCoreModule.forRoot({
         // API KEY GOOGLE MAP
-        apiKey: '',
+        apiKey: environment.apiKeyGoogleMaps,
       }),
-        // Componente para las direcciones
+      // Componente para las direcciones
       AgmDirectionModule
     ],
   declarations: [AppComponent, ToolbarComponent, InformacionRutaComponent, CompraBoletosComponent, CompraRealizadaComponent],
