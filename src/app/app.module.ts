@@ -24,7 +24,7 @@ import { AgmDirectionModule } from 'agm-direction';
       ServicesModule,
       AgmCoreModule.forRoot({ 
         // API KEY GOOGLE MAP
-        apiKey: 'AIzaSyA7ExFXTzxWRyqArdiY3sHfu2nG8tAz6MM',
+        apiKey: '',
       }),
         // Componente para las direcciones
       AgmDirectionModule
