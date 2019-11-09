@@ -1,12 +1,20 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import {InformacionRutaComponent} from '../informacion-ruta/informacion-ruta.component';
 @Component({
   selector: 'my-toolbar',
-  templateUrl: './toolbar.component.html',
+  templateUrl: './autocompletado.component.html',
 })
 export class ToolbarComponent {
+
+  constructor(private _bottomSheet: MatBottomSheet) {}
+
+  openBottomSheet(): void {
+    this._bottomSheet.open(InformacionRutaComponent);
+  }
   @Output() acselectedOption = new EventEmitter<any>();
+  public showChips = false;
 
   myControl = new FormControl();
   options: any[] = [
@@ -20,7 +28,7 @@ export class ToolbarComponent {
       longitud: -85.9175752
     },
     {
-      name: 'Item route Map one',
+      name: 'Item route Map two',
       maxLatitude: 32,
       maxLongitude: -92,
       minLatitude: 29,
@@ -34,5 +42,6 @@ export class ToolbarComponent {
     const input = document.getElementById('inputValue');
     input.blur();
     this.acselectedOption.emit(this.options[index]);
+    this.showChips = true;
   }
 }

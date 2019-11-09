@@ -2,11 +2,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ToolbarComponent } from './components/input_Autocompletado/autocompletado.component';
 
 import { MaterialModule } from './material.module';
 // import { ComponentsModule } from './components/components.module';
 import { ServicesModule } from './services/services.module';
+import {InformacionRutaComponent} from './components/informacion-ruta/informacion-ruta.component';
 
 
 import {
@@ -43,10 +44,11 @@ export function MapServiceProviderFactory() {
       ServicesModule,
       MapModule.forRoot()
     ],
-  declarations: [AppComponent, ToolbarComponent],
+  declarations: [AppComponent, ToolbarComponent, InformacionRutaComponent],
   providers: [{
     provide: MapAPILoader, deps: [], useFactory: MapServiceProviderFactory
   }],
+  entryComponents:[InformacionRutaComponent],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
