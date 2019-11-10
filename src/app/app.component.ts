@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from './services/http/http.service';
+import { MouseEvent } from '@agm/core';
 
 @Component({
   selector: "my-app",
@@ -16,13 +17,12 @@ export class AppComponent implements OnInit {
   lat: Number = 41.85
   lng: Number = -87.65
 
+  public markers: any = [];
   // Coordenada de ejemplo Origen y destino del primer punto
-  origin = { lat: 12.923640, lng: -85.922035 };
-  destination = { lat: 13.244484, lng: -85.558890 };
+  public origin: any;
+  public destination: any;
 
-  // Coordenada de ejemplo Origen y destino del segundo punto
-  origin2 = { lat: 12.112772, lng: -86.238566 };
-  destination2 = { lat: 12.933362, lng: -85.917761 };
+  public directions: any = [];
 
   ngOnInit() {
   }
@@ -68,5 +68,36 @@ export class AppComponent implements OnInit {
     this.httpService.eliminarRuta(id).subscribe(result => {
       console.log(result);
     });
+  }
+
+  mapClicked($event: MouseEvent) {
+    const point = {
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+    };
+
+    this.markers.push({
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      draggable: true
+    });
+  }
+
+  clickedMarker(label: string, index: number) {
+    console.log(`clicked the marker: ${label || index}`)
+  }
+
+  optionSelected(event) {
+    this.directions = [];
+    this.origin = {
+      lng: event['start']['coordinates'][0],
+      lat: event['start']['coordinates'][1],
+    };
+
+    this.destination = {
+      lng: event['end']['coordinates'][0],
+      lat: event['end']['coordinates'][1],
+    }
+
   }
 }
