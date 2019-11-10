@@ -1,21 +1,22 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
-import {InformacionRutaComponent} from '../informacion-ruta/informacion-ruta.component';
-import {CompraBoletosComponent} from '../compra-boletos/compra-boletos.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { InformacionRutaComponent } from '../informacion-ruta/informacion-ruta.component';
+import { CompraBoletosComponent } from '../compra-boletos/compra-boletos.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 @Component({
   selector: 'my-toolbar',
   templateUrl: './autocompletado.component.html',
 })
 export class ToolbarComponent {
 
-  constructor(private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {}
-/**
- * @method openDialogCompra
- * Este metodo habré el componete de compra de boleto, 
- * y muestra la información que debe llenar el usuario para realiza una compra
- */
+  constructor(private _bottomSheet: MatBottomSheet, public dialog: MatDialog) { }
+  /**
+   * @method openDialogCompra
+   * Este metodo habré el componete de compra de boleto, 
+   * y muestra la información que debe llenar el usuario para realiza una compra
+   */
   openDialogCompra(): void {
     this._bottomSheet.open(CompraBoletosComponent);
   }
