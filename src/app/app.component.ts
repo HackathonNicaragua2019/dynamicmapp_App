@@ -110,6 +110,7 @@ export class AppComponent implements OnInit {
       };
       this.markers.push(m);
     });
+    console.log(this.markers);
   }
 
 }
