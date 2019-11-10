@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from './services/http/http.service';
 import { MouseEvent } from '@agm/core';
+import { timer } from 'rxjs/observable/timer';
 
 @Component({
   selector: "my-app",
@@ -11,17 +12,23 @@ export class AppComponent implements OnInit {
 
   constructor(private httpService: HttpService) {
 
+    timer(10000, 10000).subscribe(result => {
+      this.httpService.getBus(1).subscribe(res => {
+        this.longitud = res['position']['coordinates'][0];
+        this.latitud = res['position']['coordinates'][1];
+      });
+    });
   }
 
   // Inicializacion de los puntos en el mapa
-  lat: Number = 41.85
-  lng: Number = -87.65
+  latitud: Number = 41.85
+  longitud: Number = -87.65
 
   public markers: any = [];
   // Coordenada de ejemplo Origen y destino del primer punto
   public origin: any;
   public destination: any;
-
+  public ruta: any;
   public directions: any = [];
 
   ngOnInit() {
@@ -71,16 +78,16 @@ export class AppComponent implements OnInit {
   }
 
   mapClicked($event: MouseEvent) {
-    const point = {
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-    };
+    // const point = {
+    //   lat: $event.coords.lat,
+    //   lng: $event.coords.lng,
+    // };
 
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: true
-    });
+    // this.markers.push({
+    //   lat: point.lat,
+    //   lng: point.lng,
+    //   draggable: true
+    // });
   }
 
   clickedMarker(label: string, index: number) {
@@ -88,7 +95,7 @@ export class AppComponent implements OnInit {
   }
 
   optionSelected(event) {
-    this.directions = [];
+    this.ruta = event;
     this.origin = {
       lng: event['start']['coordinates'][0],
       lat: event['start']['coordinates'][1],
@@ -101,14 +108,16 @@ export class AppComponent implements OnInit {
 
   }
 
-  getMarkers() {
+  ObtenerMarcadores() {
     this.markers = [];
-    this.httpService.getStops().subscribe(result => {
-      if (result) {
-        // this.markers = result;
-        console.log(result);
-      }
+    this.ruta.stops.forEach(item => {
+      const m = {
+        lng: item['position']['coordinates'][0],
+        lat: item['position']['coordinates'][1],
+      };
+      this.markers.push(m);
     });
+    console.log(this.markers);
   }
 
 }
