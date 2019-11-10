@@ -14,6 +14,7 @@ export class HttpService {
   private APIUrl = environment.API;
   private routes = 'routes';
   private stops = 'stops';
+  private buses = 'buses';
 
   constructor(private httpClient: HttpClient) {
     this.httpHeaders = new HttpHeaders()
@@ -47,6 +48,11 @@ export class HttpService {
 
   public getStops() {
     const url = this.APIUrl + this.stops;
+    return this.getAnyUrl(url);
+  }
+
+  public getBus(id) {
+    const url = this.APIUrl + this.buses + '/' + id;
     return this.getAnyUrl(url);
   }
 

@@ -4,7 +4,7 @@
 >dynamicmaApp</my-toolbar>
 
 <mat-card class="example-card">
-    <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+    <agm-map [latitude]="latitud" [longitude]="longitud" (mapClick)="mapClicked($event)">
         <agm-direction
             [origin]="origin"
             [destination]="destination"
@@ -22,7 +22,6 @@
             </agm-info-window>
 
         </agm-marker>
-
         <!-- <agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
       [radius]="5000"
       [fillColor]="'red'"

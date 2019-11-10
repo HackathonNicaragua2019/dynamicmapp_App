@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from './services/http/http.service';
 import { MouseEvent } from '@agm/core';
+import { timer } from 'rxjs/observable/timer';
 
 @Component({
   selector: "my-app",
@@ -11,11 +12,17 @@ export class AppComponent implements OnInit {
 
   constructor(private httpService: HttpService) {
 
+    timer(10000, 10000).subscribe(result => {
+      this.httpService.getBus(1).subscribe(res => {
+        this.longitud = res['position']['coordinates'][0];
+        this.latitud = res['position']['coordinates'][1];
+      });
+    });
   }
 
   // Inicializacion de los puntos en el mapa
-  lat: Number = 41.85
-  lng: Number = -87.65
+  latitud: Number = 41.85
+  longitud: Number = -87.65
 
   public markers: any = [];
   // Coordenada de ejemplo Origen y destino del primer punto
