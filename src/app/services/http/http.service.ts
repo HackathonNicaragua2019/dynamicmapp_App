@@ -14,7 +14,6 @@ export class HttpService {
   private APIUrl = environment.API;
   private routes = 'routes';
   private stops = 'stops';
-  private
 
   constructor(private httpClient: HttpClient) {
     this.httpHeaders = new HttpHeaders()

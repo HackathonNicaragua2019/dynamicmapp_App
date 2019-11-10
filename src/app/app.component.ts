@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   // Coordenada de ejemplo Origen y destino del primer punto
   public origin: any;
   public destination: any;
-
+  public ruta: any;
   public directions: any = [];
 
   ngOnInit() {
@@ -71,16 +71,16 @@ export class AppComponent implements OnInit {
   }
 
   mapClicked($event: MouseEvent) {
-    const point = {
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-    };
+    // const point = {
+    //   lat: $event.coords.lat,
+    //   lng: $event.coords.lng,
+    // };
 
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: true
-    });
+    // this.markers.push({
+    //   lat: point.lat,
+    //   lng: point.lng,
+    //   draggable: true
+    // });
   }
 
   clickedMarker(label: string, index: number) {
@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
   }
 
   optionSelected(event) {
-    this.directions = [];
+    this.ruta = event;
     this.origin = {
       lng: event['start']['coordinates'][0],
       lat: event['start']['coordinates'][1],
@@ -101,13 +101,14 @@ export class AppComponent implements OnInit {
 
   }
 
-  getMarkers() {
+  ObtenerMarcadores() {
     this.markers = [];
-    this.httpService.getStops().subscribe(result => {
-      if (result) {
-        // this.markers = result;
-        console.log(result);
-      }
+    this.ruta.stops.forEach(item => {
+      const m = {
+        lng: item['position']['coordinates'][0],
+        lat: item['position']['coordinates'][1],
+      };
+      this.markers.push(m);
     });
   }
 

@@ -1,4 +1,7 @@
-<my-toolbar (acselectedOption)='optionSelected($event)'>dynamicmaApp</my-toolbar>
+<my-toolbar 
+(acselectedOption)='optionSelected($event)'
+(getMarkers)="ObtenerMarcadores()"
+>dynamicmaApp</my-toolbar>
 
 <mat-card class="example-card">
     <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">

@@ -41,30 +41,11 @@ export class ToolbarComponent implements OnInit {
   }
 
   @Output() acselectedOption = new EventEmitter<any>();
+  @Output() getMarkers = new EventEmitter();
   public showChips = false;
 
   myControl = new FormControl();
   options: any;
-  // options: any = [
-  //   {
-  //     name: 'Item route Map one',
-  //     maxLatitude: 12.9289487,
-  //     maxLongitude: -85.9175752,
-  //     minLatitude: 12.9289487,
-  //     minLongitude: -85.9175752,
-  //     latitud: 12.9289487,
-  //     longitud: -85.9175752
-  //   },
-  //   {
-  //     name: 'Item route Map two',
-  //     maxLatitude: 32,
-  //     maxLongitude: -92,
-  //     minLatitude: 29,
-  //     minLongitude: -98,
-  //     latitud: 29.714994,
-  //     longitud: -95.46244
-  //   }
-  // ];
 
   selectedOption(event, index) {
     const input = document.getElementById('inputValue');
@@ -75,5 +56,9 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  getMarker(){
+    this.getMarkers.emit();
   }
 }

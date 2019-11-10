@@ -1,5 +1,4 @@
-<mat-toolbar color="primary" style="height:111%;">
-    <form class="example-form">
+<form class="example-form">
         <mat-form-field class="example-full-width">
             <input type="text" #firstname="matInput" id="inputValue" 
                 placeholder="Lista de rutas"
@@ -13,11 +12,9 @@
             </mat-autocomplete>
         </mat-form-field>
     </form>
-
-</mat-toolbar>
 <br>
 <mat-chip-list aria-label="Paradas" *ngIf="showChips">
-    <mat-chip>Paradas</mat-chip>
+    <mat-chip (click)="getMarker()">Paradas</mat-chip>
     <mat-chip  (click)="openBottomSheet()">Información</mat-chip>
     <mat-chip (click)="openDialogCompra()">Compra de boleto</mat-chip>
 </mat-chip-list>
