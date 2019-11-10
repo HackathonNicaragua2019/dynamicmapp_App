@@ -13,6 +13,7 @@ export class HttpService {
   private httpHeaders: any;
   private APIUrl = environment.API;
   private routes = 'routes';
+  private stops = 'stops';
   private
 
   constructor(private httpClient: HttpClient) {
@@ -43,6 +44,11 @@ export class HttpService {
   public eliminarRuta(id) {
     const url = this.APIUrl + this.routes + '/' + id;
     return this.httpClient.delete(url, this.httpHeaders);
+  }
+
+  public getStops() {
+    const url = this.APIUrl + this.stops;
+    return this.getAnyUrl(url);
   }
 
 }

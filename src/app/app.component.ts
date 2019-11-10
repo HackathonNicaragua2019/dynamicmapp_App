@@ -100,4 +100,15 @@ export class AppComponent implements OnInit {
     }
 
   }
+
+  getMarkers() {
+    this.markers = [];
+    this.httpService.getStops().subscribe(result => {
+      if (result) {
+        // this.markers = result;
+        console.log(result);
+      }
+    });
+  }
+
 }
